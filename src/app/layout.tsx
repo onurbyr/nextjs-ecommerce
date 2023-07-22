@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { NavBar } from "@/components";
+import { Footer, NavBar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Ecommerce App",
@@ -17,6 +17,7 @@ export default function RootLayout({
       <body>
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

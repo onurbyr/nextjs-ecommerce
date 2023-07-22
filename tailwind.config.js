@@ -14,7 +14,8 @@ module.exports = {
       },
       colors: {
         'main-red': '#D10024',
-        'main-text' : '#FFFFFF'
+        'main-text' : '#FFFFFF',
+        'secondary-text' : '#B9BABC'
       },
     },
   },
