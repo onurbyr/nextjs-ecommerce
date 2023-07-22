@@ -5,14 +5,15 @@ interface InputWithButtonProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputWithButton = (props: InputWithButtonProps) => {
+  const { buttonTitle, ...rest } = props;
   return (
     <div>
-      <input {...props} type="text" className="rounded-l-full px-6 py-2" />
+      <input {...rest} type="text" className="rounded-l-full px-6 py-2" />
       <button
         type="button"
         className="bg-main-red text-main-text rounded-r-full px-6 py-2"
       >
-        {props.buttonTitle}
+        {buttonTitle}
       </button>
     </div>
   );
