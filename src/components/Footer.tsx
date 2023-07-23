@@ -3,6 +3,13 @@ import { Divider } from "../components";
 
 import { IoMailOutline } from "react-icons/io5";
 import { MdLocationOn, MdPhone } from "react-icons/md";
+import {
+  FaCcVisa,
+  FaCreditCard,
+  FaCcPaypal,
+  FaCcMastercard,
+  FaCcDiscover,
+} from "react-icons/fa";
 
 interface FooterSectionProps {
   title: string;
@@ -89,6 +96,20 @@ const Footer = () => {
               { title: "Help" },
             ]}
           />
+        </div>
+      </div>
+      <div className="bg-[#1E1F29]">
+        <div className="max-width flex flex-col items-center py-10">
+          <div className="flex gap-2 mb-4 text-4xl opacity-50">
+            <FaCcVisa />
+            <FaCreditCard />
+            <FaCcPaypal />
+            <FaCcMastercard />
+            <FaCcDiscover />
+          </div>
+          <p className="text-secondary-text text-xs">
+            Copyright ©2023 All rights reserved
+          </p>
         </div>
       </div>
     </>
