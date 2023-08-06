@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import {colors} from './src/constants'
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -13,9 +14,9 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'main-red': '#D10024',
-        'main-text' : '#FFFFFF',
-        'secondary-text' : '#B9BABC'
+        'main-red': colors.mainRed,
+        'main-text' : colors.mainText,
+        'secondary-text' : colors.secondaryText
       },
     },
   },

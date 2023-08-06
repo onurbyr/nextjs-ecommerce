@@ -2,6 +2,8 @@
 
 import { ProductProps } from "@/types";
 import Image from "next/image";
+import StarRating from "./StarRating";
+import { colors } from "@/constants";
 
 interface ProductCardProps {
   product: ProductProps;
@@ -19,9 +21,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
         style={{ width: "100%", height: "200px", marginBottom: "0.5rem" }}
         className="object-contain"
       />
-      <div className="text-[#8D99AE]">{product.category}</div>
-      <div className="text-[#2B2D42] text-lg font-bold">{product.title}</div>
+      <div className="text-[#8D99AE] text-sm">{product.category}</div>
+      <div className="text-[#2B2D42] font-bold">{product.title}</div>
       <div className="text-main-red text-lg font-bold">${product.price}</div>
+      <div className="flex">
+        <StarRating
+          rate={product.rating.rate}
+          color={colors.mainRed}
+          size="0.8rem"
+        />
+        <div className="text-[#8D99AE] text-xs ml-1">
+          {product.rating.count}
+        </div>
+      </div>
     </div>
   );
 };
