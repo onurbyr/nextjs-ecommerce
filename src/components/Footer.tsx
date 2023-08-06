@@ -31,9 +31,12 @@ const FooterSection = ({
         <p className="text-secondary-text mb-2">{explanation}</p>
       ) : null}
       <ul>
-        {elements.map((el) => {
+        {elements.map((el, index) => {
           return (
-            <li className="text-secondary-text flex items-center mt-3">
+            <li
+              key={index}
+              className="text-secondary-text flex items-center mt-3"
+            >
               {el.logo ? (
                 <div className="mr-3 text-main-red">{el.logo}</div>
               ) : null}
