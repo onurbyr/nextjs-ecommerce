@@ -16,7 +16,9 @@ module.exports = {
       colors: {
         'main-red': colors.mainRed,
         'main-text' : colors.mainText,
-        'secondary-text' : colors.secondaryText
+        'secondary-text' : colors.secondaryText,
+        'main-background' : colors.mainBackground,
+        'secondary-background' : colors.secondaryBackground,
       },
     },
   },
