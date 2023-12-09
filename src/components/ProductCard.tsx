@@ -13,7 +13,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="flex flex-col">
-      <div className="border hover:border-main-red hover:border flex flex-col items-center p-10 flex-1">
+      <div className="border hover:border-main-red hover:border flex flex-col items-center px-10 pt-10 pb-2 flex-1 group">
         <Image
           src={product.image}
           alt="product-image"
@@ -28,7 +28,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.title}
         </div>
         <div className="text-main-red text-lg font-bold">${product.price}</div>
-        <div className="flex">
+        <div className="flex mb-3">
           <StarRating
             rate={product.rating.rate}
             color={colors.mainRed}
@@ -38,9 +38,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.rating.count}
           </div>
         </div>
-      </div>
-      <div className="p-3 bg-main-background flex justify-center">
-        <AnimationButton buttonTitle="ADD TO CART"></AnimationButton>
+        <div className="mt-auto invisible group-hover:visible">
+          <AnimationButton buttonTitle="ADD TO CART"></AnimationButton>
+        </div>
       </div>
     </div>
   );
