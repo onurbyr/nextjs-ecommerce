@@ -6,7 +6,8 @@ import { IoMailOutline, IoCart } from "react-icons/io5";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 import Image from "next/image";
-import { Divider, InputWithButton } from "../components";
+import { CartBadge, Divider, InputWithButton } from "../components";
+import { useAppSelector } from "@/redux/hooks";
 
 interface NavBarLeftItemProps {
   icon: React.ReactNode;
@@ -25,6 +26,7 @@ const NavBarItem = ({ icon, text }: NavBarLeftItemProps) => {
 
 const NavBar = () => {
   const [value, setValue] = useState<string>("");
+  const cart = useAppSelector((state) => state.cart.cart);
 
   return (
     <>
@@ -56,7 +58,8 @@ const NavBar = () => {
             onChange={(e) => setValue(e.target.value)}
             buttonTitle="Search"
           />
-          <div className="text-main-text flex flex-col items-center ">
+          <div className="text-main-text flex flex-col items-center relative">
+            <CartBadge count={cart.length} />
             <IoCart size="1.8rem" />
             <div>Your Cart</div>
           </div>
