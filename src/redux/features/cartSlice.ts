@@ -1,5 +1,6 @@
 import { ProductProps } from "@/types";
 import { createSlice, current } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export type CartState = {
   cart: ProductProps[];
@@ -21,9 +22,11 @@ export const cart = createSlice({
       );
 
       if (isAlreadyInCart) {
+        toast.error("Item already in cart");
         return;
       }
       state.cart.push(action.payload);
+      toast.success("Item added to cart");
     },
   },
 });
