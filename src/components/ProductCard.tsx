@@ -5,12 +5,16 @@ import Image from "next/image";
 import StarRating from "./StarRating";
 import { colors } from "@/constants";
 import { AnimationButton } from "@/components";
+import { addToCart } from "@/redux/features/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 interface ProductCardProps {
   product: ProductProps;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="flex flex-col">
       <div className="border hover:border-main-red hover:border flex flex-col items-center px-10 pt-10 pb-2 flex-1 group">
@@ -39,7 +43,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
         <div className="mt-auto invisible group-hover:visible">
-          <AnimationButton buttonTitle="ADD TO CART"></AnimationButton>
+          <AnimationButton
+            buttonTitle="ADD TO CART"
+            onClick={() => {
+              dispatch(addToCart(product));
+            }}
+          ></AnimationButton>
         </div>
       </div>
     </div>

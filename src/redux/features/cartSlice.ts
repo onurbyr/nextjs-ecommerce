@@ -1,11 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { ProductProps } from "@/types";
+import { createSlice, current } from "@reduxjs/toolkit";
 
-type CartState = {
-  value: number;
+export type CartState = {
+  cart: ProductProps[];
 };
 
 const initialState = {
-  value: 0,
+  cart: [],
 } as CartState;
 
 export const cart = createSlice({
@@ -13,11 +14,19 @@ export const cart = createSlice({
   initialState,
   reducers: {
     reset: () => initialState,
-    increment: (state) => {
-      state.value += 1;
+    addToCart: (state, action) => {
+      const currentCart = current(state).cart;
+      const isAlreadyInCart = currentCart.some(
+        (item) => item.id === action.payload.id
+      );
+
+      if (isAlreadyInCart) {
+        return;
+      }
+      state.cart.push(action.payload);
     },
   },
 });
 
-export const { increment, reset } = cart.actions;
+export const { reset, addToCart } = cart.actions;
 export default cart.reducer;
