@@ -8,6 +8,7 @@ import { PiCurrencyDollarBold } from "react-icons/pi";
 import Image from "next/image";
 import { CartBadge, Divider, InputWithButton } from "../components";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 
 interface NavBarLeftItemProps {
   icon: React.ReactNode;
@@ -45,24 +46,28 @@ const NavBar = () => {
       </div>
       <div className="bg-[#15161D] py-3">
         <div className="max-width px-3 xl:px-0 gap-3 flex flex-col md:flex-row items-center md:justify-between">
-          <Image
-            src={"/applogo.png"}
-            alt="logo"
-            width={170}
-            height={70}
-            priority
-          />
+          <Link href="/">
+            <Image
+              src={"/applogo.png"}
+              alt="logo"
+              width={170}
+              height={70}
+              priority
+            />
+          </Link>
           <InputWithButton
             placeholder="Search here"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             buttonTitle="Search"
           />
-          <div className="text-main-text flex flex-col items-center relative">
-            <CartBadge count={cart.length} />
-            <IoCart size="1.8rem" />
-            <div>Your Cart</div>
-          </div>
+          <Link href="/cart">
+            <div className="text-main-text flex flex-col items-center relative">
+              <CartBadge count={cart.length} />
+              <IoCart size="1.8rem" />
+              <div>Your Cart</div>
+            </div>
+          </Link>
         </div>
       </div>
       <Divider color="#D10024" size="3px" />
