@@ -53,7 +53,7 @@ const FooterSection = ({
 
 const Footer = () => {
   return (
-    <>
+    <div className="mt-auto">
       <Divider color="#D10024" size="3px" />
       <div className="bg-[#15161D]  ">
         <div className="max-width py-10 px-3 grid grid-cols-2 gap-5 md:grid-cols-4 ">
@@ -115,7 +115,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -6,9 +6,16 @@ import { MdDelete } from "react-icons/md";
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart.cart);
+  if (cart.length === 0) {
+    return (
+      <div className="flex flex-1 items-center justify-center">
+        <p className="text-xl">There are no products in your cart</p>
+      </div>
+    );
+  }
   return (
-    <main className="flex flex-col py-10 px-3 xl:px-0 max-width md:flex-row md:justify-between gap-3">
-      <div className="border-2 flex flex-col">
+    <main className="flex flex-col py-10 px-3 xl:px-0 max-width md:flex-row md:justify-between gap-3 w-full">
+      <div className="flex flex-col">
         <table>
           <thead>
             <tr>
@@ -45,7 +52,7 @@ const Cart = () => {
           </tbody>
         </table>
       </div>
-      {/* <div className="border-2 flex flex-col">page</div> */}
+      <div className="border-2 flex flex-col">Cart Summary</div>
     </main>
   );
 };
