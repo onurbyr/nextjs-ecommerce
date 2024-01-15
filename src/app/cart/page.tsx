@@ -1,11 +1,16 @@
 "use client";
 
-import { useAppSelector } from "@/redux/hooks";
+import { Button } from "@/components";
+import { colors } from "@/constants";
+import { removeFromCart } from "@/redux/features/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart.cart);
+  const dispatch = useAppDispatch();
+
   if (cart.length === 0) {
     return (
       <div className="flex flex-1 items-center justify-center">
@@ -14,8 +19,8 @@ const Cart = () => {
     );
   }
   return (
-    <main className="flex flex-col py-10 px-3 xl:px-0 max-width md:flex-row md:justify-between gap-3 w-full">
-      <div className="flex flex-col">
+    <main className="flex flex-col py-10 px-3 xl:px-0 max-width md:flex-row md:justify-between gap-10 w-full">
+      <div className="flex flex-col flex-1">
         <table>
           <thead>
             <tr>
@@ -42,9 +47,9 @@ const Cart = () => {
                 <td className="border border-main-background p-3">
                   <div
                     className="flex justify-center cursor-pointer"
-                    onClick={() => console.log(item.id)}
+                    onClick={() => dispatch(removeFromCart(item))}
                   >
-                    <MdDelete size="1.5rem" />
+                    <MdDelete size="1.5rem" color={colors.mainRed} />
                   </div>
                 </td>
               </tr>
@@ -52,7 +57,39 @@ const Cart = () => {
           </tbody>
         </table>
       </div>
-      <div className="border-2 flex flex-col">Cart Summary</div>
+      <div className="border-2 flex flex-col p-5 flex-1 text-sm">
+        <div className="text-2xl font-semibold tracking-wider font-mono text-center">
+          YOUR ORDER
+        </div>
+        <div>
+          <div className="flex justify-between font-semibold">
+            <div>PRODUCT</div>
+            <div>Total</div>
+          </div>
+          {cart.map((item) => (
+            <div
+              className="flex justify-between mt-1 text-[#333] gap-2"
+              key={item.id}
+            >
+              <div>{item.title}</div>
+              <div>${item.price.toFixed(2)}</div>
+            </div>
+          ))}
+        </div>
+        <div className=" flex justify-between font-semibold mt-5 items-center">
+          <div>TOTAL</div>
+          <div className="text-main-red text-2xl">
+            ${cart.reduce((acc, item) => acc + item.price, 0).toFixed(2)}
+          </div>
+        </div>
+        <Button
+          className="mt-3"
+          buttonTitle="PLACE ORDER"
+          onClick={() => {
+            console.log("asd");
+          }}
+        ></Button>
+      </div>
     </main>
   );
 };

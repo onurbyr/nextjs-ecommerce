@@ -1,4 +1,5 @@
 import AnimationButton from "./AnimationButton";
+import Button from "./Button";
 import CartBadge from "./CartBadge";
 import Divider from "./Divider";
 import NavBar from "./NavBar";
@@ -9,6 +10,7 @@ import StarRating from "./StarRating";
 
 export {
   AnimationButton,
+  Button,
   CartBadge,
   Divider,
   NavBar,
