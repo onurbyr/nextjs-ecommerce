@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { IoMailOutline, IoCart } from "react-icons/io5";
 import { MdLocationOn, MdPhone } from "react-icons/md";
@@ -26,7 +26,6 @@ const NavBarItem = ({ icon, text }: NavBarLeftItemProps) => {
 };
 
 const NavBar = () => {
-  const [value, setValue] = useState<string>("");
   const cart = useAppSelector((state) => state.cart.cart);
 
   return (
@@ -55,12 +54,6 @@ const NavBar = () => {
               priority
             />
           </Link>
-          <InputWithButton
-            placeholder="Search here"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            buttonTitle="Search"
-          />
           <Link href="/cart">
             <div className="text-main-text flex flex-col items-center relative">
               <CartBadge count={cart.length} />
