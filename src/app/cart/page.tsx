@@ -2,14 +2,33 @@
 
 import { Button } from "@/components";
 import { colors } from "@/constants";
-import { removeFromCart } from "@/redux/features/cartSlice";
+import { emptyCart, removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import React from "react";
+import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
+import Image from "next/image";
 
 const Cart = () => {
   const cart = useAppSelector((state) => state.cart.cart);
+  const [orderCompletedVisible, setOrderCompletedVisible] = useState(false);
   const dispatch = useAppDispatch();
+
+  if (orderCompletedVisible) {
+    return (
+      <div className="flex flex-col flex-1 items-center justify-center">
+        <Image
+          src={require("../../assets/order-completed.svg")}
+          alt="Order Completed"
+          width={170}
+          height={70}
+          priority
+        />
+        <div className="text-2xl font-semibold tracking-wider text-main-red">
+          Order Completed
+        </div>
+      </div>
+    );
+  }
 
   if (cart.length === 0) {
     return (
@@ -86,7 +105,8 @@ const Cart = () => {
           className="mt-3"
           buttonTitle="PLACE ORDER"
           onClick={() => {
-            console.log("asd");
+            dispatch(emptyCart());
+            setOrderCompletedVisible(true);
           }}
         ></Button>
       </div>
