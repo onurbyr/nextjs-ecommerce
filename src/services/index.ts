@@ -14,3 +14,7 @@ export async function getProductsInCategory(category: string) {
   }
   return await get(`products/category/${category}`);
 }
+
+export async function getProduct(category: string) {
+  return await get(`products/${category}`);
+}

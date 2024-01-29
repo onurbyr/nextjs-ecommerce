@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import HomeContent from "./HomeContent";
 import InputWithButton from "./InputWithButton";
+import LoadingIndicator from "./LoadingIndicator";
 import ProductCard from "./ProductCard";
 import StarRating from "./StarRating";
 
@@ -20,6 +21,7 @@ export {
   Footer,
   HomeContent,
   InputWithButton,
+  LoadingIndicator,
   ProductCard,
   StarRating,
 };

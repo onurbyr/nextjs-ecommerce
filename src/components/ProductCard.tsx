@@ -7,6 +7,7 @@ import { colors } from "@/constants";
 import { AnimationButton } from "@/components";
 import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: ProductProps;
@@ -18,19 +19,24 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="flex flex-col">
       <div className="border hover:border-main-red hover:border flex flex-col items-center px-10 pt-10 pb-2 flex-1 group">
-        <Image
-          src={product.image}
-          alt="product-image"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "100%", height: "200px", marginBottom: "0.5rem" }}
-          className="object-contain"
-        />
-        <div className="text-[#8D99AE] text-sm">{product.category}</div>
-        <div className="text-[#2B2D42] font-bold line-clamp-2">
-          {product.title}
-        </div>
+        <Link
+          href={`/productDetails/${encodeURIComponent(product.id)}`}
+          className="flex flex-col items-center flex-1"
+        >
+          <Image
+            src={product.image}
+            alt="product-image"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "200px", marginBottom: "0.5rem" }}
+            className="object-contain"
+          />
+          <div className="text-[#8D99AE] text-sm">{product.category}</div>
+          <div className="text-[#2B2D42] font-bold line-clamp-2">
+            {product.title}
+          </div>
+        </Link>
         <div className="text-main-red text-lg font-bold">${product.price}</div>
         <div className="flex mb-3">
           <StarRating
