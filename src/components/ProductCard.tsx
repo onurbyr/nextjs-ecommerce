@@ -17,8 +17,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex flex-col">
-      <div className="border hover:border-main-red hover:border flex flex-col items-center px-10 pt-10 pb-2 flex-1 group">
+    <div className="border hover:border-main-red hover:border flex flex-col items-center pt-10 pb-3 flex-1 group">
+      <div className="px-5">
         <Link
           href={`/productDetails/${encodeURIComponent(product.id)}`}
           className="flex flex-col items-center flex-1"
@@ -48,14 +48,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.rating.count}
           </div>
         </div>
-        <div className="mt-auto invisible group-hover:visible">
-          <AnimationButton
-            buttonTitle="ADD TO CART"
-            onClick={() => {
-              dispatch(addToCart(product));
-            }}
-          ></AnimationButton>
-        </div>
+      </div>
+      <div className="mt-auto px-1 md:invisible group-hover:visible">
+        <AnimationButton
+          buttonTitle="Add to Cart"
+          onClick={() => {
+            dispatch(addToCart(product));
+          }}
+        ></AnimationButton>
       </div>
     </div>
   );

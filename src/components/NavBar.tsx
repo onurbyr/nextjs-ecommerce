@@ -6,7 +6,7 @@ import { IoMailOutline, IoCart } from "react-icons/io5";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 import Image from "next/image";
-import { CartBadge, Divider, InputWithButton } from "../components";
+import { CartBadge, Divider } from "../components";
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 
@@ -32,7 +32,7 @@ const NavBar = () => {
     <>
       <div className="bg-[#1E1F29] py-3">
         <div className="max-width px-3 xl:px-0 flex flex-col md:flex-row md:justify-between gap-3 ">
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row flex-wrap gap-3">
             <NavBarItem icon={<MdPhone />} text="+021-95-51-84" />
             <NavBarItem icon={<IoMailOutline />} text="email@email.com" />
             <NavBarItem icon={<MdLocationOn />} text="1734 Stonecoal Road" />

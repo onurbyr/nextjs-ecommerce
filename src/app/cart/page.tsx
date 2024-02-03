@@ -15,7 +15,7 @@ const Cart = () => {
 
   if (orderCompletedVisible) {
     return (
-      <div className="flex flex-col flex-1 items-center justify-center">
+      <div className="flex flex-col flex-1 items-center justify-center py-20">
         <Image
           src={require("../../assets/order-completed.svg")}
           alt="Order Completed"
@@ -32,7 +32,7 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="flex flex-1 items-center justify-center">
+      <div className="flex flex-1 items-center justify-center py-20">
         <p className="text-xl">There are no products in your cart</p>
       </div>
     );
